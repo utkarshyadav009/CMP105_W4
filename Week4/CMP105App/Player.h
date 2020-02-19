@@ -11,6 +11,7 @@ class Player :
 
 public:
 	sf::RenderWindow* window;
+	sf::View view;
 	void handleInput(float dt) override;
 	
 };

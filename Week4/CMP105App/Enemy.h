@@ -5,8 +5,6 @@ class Enemy :
 {
 public:
 	sf::RenderWindow* window;
-	void e_update(float dt) ;
-
 	
 
 };

@@ -6,8 +6,17 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	input = in;
 
 	// initialise game objects
+	t3.loadFromFile("gfx/Level1_1.png");
 	t.loadFromFile("gfx/Mushroom.png");
 	t1.loadFromFile("gfx/Goomba.png");
+	t2.loadFromFile("gfx/icon.png");
+
+	b.setInput(input);
+	b.setTexture(&t3);
+	b.setSize(sf::Vector2f(11038, 675));
+	b.setPosition(100, 100);
+	b.setVelocity(500.0, 500.0);
+
 
 	p.setInput(input);
 	p.setTexture(&t);
@@ -20,7 +29,14 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	e.setSize(sf::Vector2f(100, 100));
 	e.setPosition(500, 500);
 	e.setVelocity(500.0, 500.0);
-
+	 
+	
+	c.setInput(input);
+	c.setTexture(&t2);
+	c.setSize(sf::Vector2f(100, 100));
+	c.setPosition(input->getMouseX(), input->getMouseY());
+	view.setCenter(200.f, 200.f);
+	
 }
 
 Level::~Level()
@@ -37,7 +53,10 @@ void Level::handleInput(float dt)
 		window->close();
 	}
 	p.handleInput(dt);
-
+	window->setMouseCursorVisible(false);
+	window->getDefaultView();
+	
+	
 }
 
 // Update game objects
@@ -56,15 +75,34 @@ void Level::update(float dt)
 		speedy = -speedy;
 
 	}
+	c.setPosition(input->getMouseX(), input->getMouseY());
+	//p.getPosition().x + p.getSize().x >= window->getSize().x || p.getPosition().x < 0
+
+	if (input->isKeyDown(sf::Keyboard::D))
+	{	
+
+		view.move(1.f, 0);
+		window->setView(view);
+
+	}
+	if (input->isKeyDown(sf::Keyboard::A))
+	{
+
+		view.move(-1.f, 0);
+		window->setView(view);
+
+	}
 }
 
 // Render level
 void Level::render()
 {
 	beginDraw();
-
+	window->draw(b);
 	window->draw(p);
 	window->draw(e);
+	window->draw(c);
+
 	endDraw();
 }
 

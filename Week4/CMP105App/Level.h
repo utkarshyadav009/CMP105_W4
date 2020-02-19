@@ -7,6 +7,8 @@
 #include <iostream>
 #include"Player.h"
 #include"Enemy.h"
+#include"Cursor.h"
+#include"background.h"
 class Level{
 public:
 	Level(sf::RenderWindow* hwnd, Input* in);
@@ -26,13 +28,24 @@ private:
 	// Default variables for level class.
 	sf::RenderWindow* window;
 	Input* input;
+	sf::View view;
+	//v = window->getView;
+	
+
+	
+	
 
 	// Level objects
 	float speedx = 100.0;
 	float speedy = 100;
 	Player p;
 	Enemy e;
+	Cursor c;
+	background b;
+	
 
 	sf::Texture t;
 	sf::Texture t1;
+	sf::Texture t2;
+	sf::Texture t3;
 };
