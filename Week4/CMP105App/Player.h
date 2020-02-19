@@ -1,14 +1,17 @@
 #pragma once
-#include <iostream>
+#include <SFML/Graphics.hpp>
+#include "Framework/Input.h"
 #include "Framework/GameObject.h"
-#include"Framework/Input.h"
+#include <string.h>
+#include <iostream>
+
 class Player :
 	public GameObject , public Input
 {	
 
 public:
-	
+	sf::RenderWindow* window;
 	void handleInput(float dt) override;
- 
+	
 };
 

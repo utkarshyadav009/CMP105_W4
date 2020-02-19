@@ -6,21 +6,21 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	input = in;
 
 	// initialise game objects
-	texture.loadFromFile("gfx/Mushroom.png");
-	texture1.loadFromFile("gfx/Goomba.png");
+	t.loadFromFile("gfx/Mushroom.png");
+	t1.loadFromFile("gfx/Goomba.png");
 
 	p.setInput(input);
-	p.setTexture(&texture);
+	p.setTexture(&t);
 	p.setSize(sf::Vector2f(100, 100));
 	p.setPosition(100, 100);
 	p.setVelocity(500.0, 500.0);
 
 	e.setInput(input);
-	e.setTexture(&texture1);
+	e.setTexture(&t1);
 	e.setSize(sf::Vector2f(100, 100));
-	e.setPosition(200, 200);
+	e.setPosition(500, 500);
 	e.setVelocity(500.0, 500.0);
-	e.setWindow(window);
+
 }
 
 Level::~Level()
@@ -43,7 +43,19 @@ void Level::handleInput(float dt)
 // Update game objects
 void Level::update(float dt)
 {
-	e.update(dt);
+	e.move(speedx * dt, speedy * dt);
+	if (e.getPosition().x + e.getSize().x >= window->getSize().x || e.getPosition().x < 0)
+	{
+		speedx = -speedx;
+
+	}
+	if (e.getPosition().y + e.getSize().y >= window->getSize().y || e.getPosition().y < 0)
+
+	{
+
+		speedy = -speedy;
+
+	}
 }
 
 // Render level

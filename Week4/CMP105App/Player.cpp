@@ -15,6 +15,8 @@ void Player::handleInput(float dt)
 	if (input->isKeyDown(sf::Keyboard::D))
 	{
 		move(sf::Vector2f(velocity.x, 0) * dt);
+	
+		
 	}
 	if (input->isKeyDown(sf::Keyboard::A))
 	{

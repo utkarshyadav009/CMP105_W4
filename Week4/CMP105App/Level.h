@@ -16,6 +16,8 @@ public:
 	void update(float dt);
 	void render();
 
+
+
 private:
 	// Default functions for rendering to the screen.
 	void beginDraw();
@@ -26,8 +28,11 @@ private:
 	Input* input;
 
 	// Level objects
+	float speedx = 100.0;
+	float speedy = 100;
 	Player p;
 	Enemy e;
-	sf::Texture texture;
-	sf::Texture texture1;
+
+	sf::Texture t;
+	sf::Texture t1;
 };
